@@ -73,12 +73,12 @@ class Shipping(models.Model):
         return f"Shipping for Order {self.order_id.id}"
 
 class CheckOut(models.Model):
-    cart_id = models.ForeignKey(CartItem, on_delete=models.CASCADE ,null=True)
+    cart_id = models.ForeignKey(CartItem, on_delete=models.CASCADE ,null=True )
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     coupon = models.CharField(max_length=50, blank=True, null=True)
     shipping_address = models.TextField()
-    payment_id = models.ForeignKey(Payment, on_delete=models.CASCADE)
+    payment_id = models.ForeignKey(Payment, on_delete=models.CASCADE ,blank=True ,null=True)
 
     def __str__(self):
-        return f"Checkout for Order {self.cart_id.id}"
+        return f"Checkout for Order {self.cart_id}"
 
